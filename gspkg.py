@@ -1,0 +1,4 @@
+
+pkgDeps = [ "glew" ]
+gspkgDeps = [ "gs" ]
+
