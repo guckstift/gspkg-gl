@@ -3,6 +3,7 @@
 #include "program.h"
 #include "shader.h"
 #include "buffer.h"
+#include "gl.h"
 #include "../gs/utils.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ namespace gl
 
 	void Program::create ()
 	{
+		loadFunctions ();
 		program = glCreateProgram ();
 	}
 
@@ -25,10 +27,10 @@ namespace gl
 		glUseProgram (program);
 	}
 
-	void Program::attachShader (Shader *shader)
+	void Program::attachShader (Shader& shader)
 	{
-		shaders.push_back (shader);
-		glAttachShader (program, shader->shader);
+		shaders.push_back (&shader);
+		glAttachShader (program, shader.shader);
 	}
 
 	bool Program::link ()

@@ -5,17 +5,24 @@
 
 using namespace gs;
 
+static bool isLoaded = false;
+
 namespace gl
 {
 	bool loadFunctions ()
 	{
-		glewExperimental = GL_TRUE;
-		GLenum err = glewInit ();
-	
-		if (err != GLEW_OK) {
-			errLog << "GLEW error: " << glewGetErrorString (err) << nl;
-			return false;
+		if (!isLoaded)
+		{
+			glewExperimental = GL_TRUE;
+			GLenum err = glewInit ();
+			
+			if (err != GLEW_OK) {
+				errLog << "GLEW error: " << glewGetErrorString (err) << nl;
+				return false;
+			}
 		}
+		
+		isLoaded = true;
 		
 		return true;
 	}

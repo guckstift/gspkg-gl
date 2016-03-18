@@ -15,12 +15,13 @@ namespace gl
 	struct Shader;
 	template<typename T> struct Buffer;
 
-	struct Program
+	class Program
 	{
+	public:
 		Program ();
 		void create ();
 		void enable ();
-		void attachShader (Shader *shader);
+		void attachShader (Shader& shader);
 		bool link ();
 		int getUniformLocation (char *name);
 		int getAttributeLocation (char *name);

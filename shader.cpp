@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include "shader.h"
+#include "gl.h"
 #include "../gs/utils.h"
 
 using namespace std;
@@ -15,6 +16,7 @@ namespace gl
 
 	void Shader::create (ShaderType _type)
 	{
+		loadFunctions ();
 		type = _type;
 		shader = glCreateShader (type);
 	}

@@ -1,4 +1,6 @@
 
+#include "gl.h"
+
 namespace gl
 {
 	template<typename T>
@@ -10,6 +12,7 @@ namespace gl
 	template<typename T>
 	void Buffer<T>::create ()
 	{
+		loadFunctions ();
 		glGenBuffers (1, &buffer);
 	}
 
